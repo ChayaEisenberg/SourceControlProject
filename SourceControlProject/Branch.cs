@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SourceControlProject
 {
-    internal class Branch
+    public class Branch:Component
     {
+        public Dictionary<string, IFile> components = new Dictionary<string, IFile>();
     }
 }

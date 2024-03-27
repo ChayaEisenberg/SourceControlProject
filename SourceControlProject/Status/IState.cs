@@ -8,4 +8,7 @@ namespace SourceControlProject.Status;
 
 public interface IState
 {
+    public void changeStatus(Component component);
+    public string getStatus();
+
 }

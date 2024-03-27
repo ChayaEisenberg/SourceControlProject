@@ -11,13 +11,13 @@ public class Staged : IState
     private static Staged _instanse;
     public static Staged GetInstanse()
     {
-        _instanse ??= new Commit();
+        _instanse ??= new Staged();
         return _instanse;
     }
     public void changeStatus(Component component)
     {
 
-        component.SetState(Staged.GetInstanse());
+        component.SetState(Commit.GetInstanse());
     }
 
     public string getStatus()

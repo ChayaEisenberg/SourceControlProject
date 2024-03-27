@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace SourceControlProject
 {
-    internal interface IFolder
+    public interface IFile
     {
+
+        
     }
 }

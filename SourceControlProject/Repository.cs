@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace SourceControlProject
 {
-    internal class Ripository
+    public class Repository
     {
+        public Dictionary<string, Branch> branches = new Dictionary<string, Branch>() { { "main", new Branch() } };
+        public Branch GetBranch(string name)
+        {
+            return branches[name];
+        }
+        
+     
     }
 }

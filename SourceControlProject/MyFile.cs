@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SourceControlProject
 {
-    internal class MyFile
+    internal class MyFile:Component,IFile
     {
+        
     }
 }

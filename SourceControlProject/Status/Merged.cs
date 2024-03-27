@@ -6,6 +6,21 @@ using System.Threading.Tasks;
 
 namespace SourceControlProject.Status;
 
-public class Marged
+public class Merged : IState
 {
+    private static Merged _instanse;
+    public static Merged GetInstanse()
+    {
+        _instanse ??= new Merged();
+        return _instanse;
+    }
+    public void changeStatus(Component component)
+    {
+        component.SetState(Staged.GetInstanse());
+    }
+
+    public string getStatus()
+    {
+        return "Marged";
+    }
 }
