@@ -8,7 +8,13 @@ namespace SourceControlProject
 {
     public class Repository
     {
-        public Dictionary<string, Branch> branches = new Dictionary<string, Branch>() { { "main", new Branch() } };
+        public string Name { get; set; }
+        public Dictionary<string, Branch> branches = new Dictionary<string, Branch>() { { "main", new Branch("main") } };
+        public Repository(string name)
+        {
+            this.Name = name;
+            branches =  new(){ { "main", new Branch("main") } };
+        }
         public Branch GetBranch(string name)
         {
             return branches[name];

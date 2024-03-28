@@ -19,9 +19,12 @@ internal class Commit : IState
     {
         component.SetState(UnderReview.GetInstanse());
     }
-
+    private Commit()
+    {
+        
+    }
     public string getStatus()
     {
-        return "UnderReview";
+        return "Under Review";
     }
 }

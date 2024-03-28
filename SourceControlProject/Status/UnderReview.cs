@@ -18,8 +18,12 @@ public class UnderReview : IState
     {
         component.SetState(ReadyToMerge.GetInstanse());
     }
+    private UnderReview()
+    {
+           
+    }
     public string getStatus()
     {
-        throw new NotImplementedException();
+        return "UnderReview";
     }
 }

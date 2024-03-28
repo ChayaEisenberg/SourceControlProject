@@ -9,5 +9,17 @@ namespace SourceControlProject
     public class Branch:Component
     {
         public Dictionary<string, IFile> components = new Dictionary<string, IFile>();
+
+        public Branch(string name):base (name)
+        {
+            
+        }
+        public override void Marge(Component other)
+        {
+          foreach (var component in components)
+            {
+
+            }
+        }
     }
 }

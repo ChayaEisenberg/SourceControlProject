@@ -19,6 +19,10 @@ public class Staged : IState
 
         component.SetState(Commit.GetInstanse());
     }
+    private Staged()
+    {
+        
+    }
 
     public string getStatus()
     {

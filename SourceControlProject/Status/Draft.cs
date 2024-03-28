@@ -18,7 +18,10 @@ public class Draft : IState
     {
         component.SetState(Staged.GetInstanse());
     }
-
+    private Draft()
+    {
+        
+    }
     public string getStatus()
     {
         return "Draft";       

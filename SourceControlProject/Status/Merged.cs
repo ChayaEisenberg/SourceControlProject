@@ -16,7 +16,11 @@ public class Merged : IState
     }
     public void changeStatus(Component component)
     {
-        component.SetState(Staged.GetInstanse());
+        Console.WriteLine("marge complited");
+    }
+    private Merged()
+    {
+        
     }
 
     public string getStatus()

@@ -18,9 +18,13 @@ public class ReadyToMerge : IState
     {
         component.SetState(Merged.GetInstanse());
     }
+    private ReadyToMerge()
+    {
+        
+    }
 
     public string getStatus()
     {
-        return "ReadyToMarge";
+        return "Ready To Marge";
     }
 }
