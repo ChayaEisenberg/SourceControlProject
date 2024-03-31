@@ -6,24 +6,29 @@ using System.Threading.Tasks;
 
 namespace SourceControlProject
 {
-    public class MyFile:Component,IFile
+    public class MyFile : Component, IFile
     {
-        public MyFile(string name):base(name) 
+        public string Content;
+        public MyFile(string name, string content) : base(name)
         {
-            
+            this.Content = content;
         }
 
-        public override void Marge(Component other)
+        public override Component Marge(Component other)
         {
-            if(other.state.getStatus()!= "Ready To Marge")
+            Component myFile = base.Marge(other);
+            if (myFile == other)
             {
-                Console.WriteLine("This file can't marged");
+                if (((MyFile)myFile).Content.Equals(((MyFile)other).Content))
+                {
+                    Console.WriteLine("The files are same");
+                }
+                else
+                {
+                    Console.WriteLine("The marge be succsesfully");
+                }
             }
-            else
-            {
-                this = other;
-            }
-
+            return myFile;
 
         }
     }

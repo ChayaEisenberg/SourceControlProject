@@ -8,16 +8,32 @@ namespace SourceControlProject
 {
     public class Folder : Component, IFile
     {
-        public Dictionary<string, IFile> components = new Dictionary<string, IFile>();
+        public Dictionary<string, Component> components = new Dictionary<string, Component>();
 
         public Folder(string name):base(name) 
         {
-            components = new Dictionary<string, IFile>();
+            components = new Dictionary<string, Component>();
         }
      
-        public override void Marge(Component other)
+        public override Component Marge(Component other)
         {
-            
+            Component folder = base.Marge(other);
+            if (folder == other)
+            {
+                foreach (var component in ((Folder)other).components)
+                {
+                    if (components.ContainsKey(component.Key))
+                    {
+                        this.components[component.Key].Marge(component.Value);
+                    }
+                    else
+                    {
+                        components.Add(component.Key, component.Value);
+                    }
+                }
+            }
+            return this;
         }
     }
+
 }

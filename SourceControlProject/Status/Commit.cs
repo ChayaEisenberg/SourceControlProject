@@ -25,6 +25,6 @@ internal class Commit : IState
     }
     public string getStatus()
     {
-        return "Under Review";
+        return "Commit";
     }
 }

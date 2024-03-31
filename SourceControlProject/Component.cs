@@ -20,7 +20,27 @@ namespace SourceControlProject
         {
             this.state = state;
         }
-        public abstract void Marge(Component other);
+        public virtual Component Marge(Component other)
+        {
+            if (other.state.getStatus() != "Ready To Marge")
+            {
+                Console.WriteLine("This file can't marged");
+                return this;
+            }
+           return other;         
+        }
+        public virtual void commit()
+        {
+            if (state.getStatus() != "Staged")
+            {
+                Console.WriteLine("This file can't ready to commit");               
+            }
+            state.changeStatus(this);
+            
+        }
+
+
+        //public Stack <IMemento>
         
 
     }

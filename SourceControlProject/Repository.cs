@@ -19,7 +19,21 @@ namespace SourceControlProject
         {
             return branches[name];
         }
-        
+        public void CreateABranch(string name)
+        {
+            branches.Add(name, new Branch(name));
+        }
+        public void DeledeABranch(string name)
+        {
+            if (!branches.ContainsKey(name))
+            {
+                Console.WriteLine("This branch isn't exsist");
+            }
+            else
+            {
+                branches.Remove(name);
+            }
+        }
      
     }
 }
