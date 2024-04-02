@@ -19,11 +19,11 @@ namespace SourceControlProject
         {
             return branches[name];
         }
-        public void CreateABranch(string name)
+        public void CreateBranch(string name)
         {
             branches.Add(name, new Branch(name));
         }
-        public void DeledeABranch(string name)
+        public void DeledeBranch(string name)
         {
             if (!branches.ContainsKey(name))
             {

@@ -1,4 +1,5 @@
-﻿using SourceControlProject.Status;
+﻿using SourceControlProject.Memento;
+using SourceControlProject.Status;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,9 +40,36 @@ namespace SourceControlProject
             
         }
 
+        public IMemento Save()
+        {
+            return new ConcreteMemento(state, DateTime.Now);
+        }
 
-        //public Stack <IMemento>
-        
+        public void Restore(IMemento memento)
+        {
+            if (!(memento is ConcreteMemento))
+            {
+                throw new Exception("Unknown memento class " + memento.ToString());
+            }
+
+            this.state = memento.GetState();
+            Console.Write($"Originator: My state has changed to: {state.getStatus()}");
+        }
+
+        public Component RequestAReview()
+        {
+            if (state.GetType() != typeof(Commit))
+            {
+                Console.WriteLine("cant review yet");
+            }
+            else
+            {
+                state.changeStatus(this);
+            }
+            return this;
+        }
+
+
 
     }
 }
