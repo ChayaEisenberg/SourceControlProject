@@ -12,6 +12,7 @@ namespace SourceControlProject
     {
         public IState state { get; private set; }
         public string Name { get; set; }
+
         public Component(string name)
         {
             this.Name = name;
@@ -21,23 +22,43 @@ namespace SourceControlProject
         {
             this.state = state;
         }
+        public Component Add()
+        {
+            if (state.getStatus() == "Draft")
+            {
+                state.changeStatus(this);
+               
+
+            }
+            else
+            {
+                Console.WriteLine("cannot add - not draft");
+            }
+            return this;
+        }
         public virtual Component Marge(Component other)
         {
+            Console.WriteLine(other.state.getStatus());
             if (other.state.getStatus() != "Ready To Marge")
             {
+
                 Console.WriteLine("This file can't marged");
                 return this;
             }
-           return other;         
+            return other;
         }
         public virtual void commit()
         {
-            if (state.getStatus() != "Staged")
+            if (state.getStatus() != "staged")
             {
-                Console.WriteLine("This file can't ready to commit");               
+                Console.WriteLine("This file can't ready to commit");
             }
-            state.changeStatus(this);
-            
+            else
+            {
+                state.changeStatus(this);
+                state.changeStatus(this);
+            }
+
         }
 
         public IMemento Save()
@@ -58,7 +79,8 @@ namespace SourceControlProject
 
         public Component RequestAReview()
         {
-            if (state.GetType() != typeof(Commit))
+
+            if (state.getStatus() != "UnderReview")
             {
                 Console.WriteLine("cant review yet");
             }
@@ -68,6 +90,7 @@ namespace SourceControlProject
             }
             return this;
         }
+        public abstract Component Copy();
 
 
 

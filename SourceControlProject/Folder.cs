@@ -14,7 +14,21 @@ namespace SourceControlProject
         {
             components = new Dictionary<string, Component>();
         }
-     
+
+        public override Component Copy()
+        {
+            Folder folder = new(this.Name);
+            folder.SetState(this.state);
+            if (components != null)
+            {
+                foreach (Component item in this.components.Values)
+                {
+                    item.Copy();
+                }
+            }
+            return folder;
+        }
+
         public override Component Marge(Component other)
         {
             Component folder = base.Marge(other);

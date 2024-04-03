@@ -4,9 +4,9 @@ namespace SourceControlProject.Memento;
 
 public class ConcreteMemento : IMemento
 {
-    private IState _state;
+    private readonly IState _state;
 
-    private DateTime _date;
+    private readonly DateTime _date;
     public ConcreteMemento(IState state, DateTime dateTime)
     {
         _state = state;

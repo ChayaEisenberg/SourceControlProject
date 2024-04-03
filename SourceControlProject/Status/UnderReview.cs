@@ -16,6 +16,8 @@ public class UnderReview : IState
     }
     public void changeStatus(Component component)
     {
+
+      
         component.SetState(ReadyToMerge.GetInstanse());
     }
     private UnderReview()

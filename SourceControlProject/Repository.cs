@@ -15,13 +15,21 @@ namespace SourceControlProject
             this.Name = name;
             branches =  new(){ { "main", new Branch("main") } };
         }
+        
         public Branch GetBranch(string name)
         {
             return branches[name];
         }
-        public void CreateBranch(string name)
+        public void AddBranch(Branch branch)
         {
-            branches.Add(name, new Branch(name));
+            branches.Add(branch.Name, branch);
+        }
+        public Branch CreateBranch(string branchToCopy, string newBranchName)
+        {
+            Component b = branches[branchToCopy].Copy();
+            b.Name = newBranchName;
+            branches.Add(b.Name, (Branch)b);
+            return (Branch)b;
         }
         public void DeledeBranch(string name)
         {
@@ -34,6 +42,7 @@ namespace SourceControlProject
                 branches.Remove(name);
             }
         }
+
      
     }
 }

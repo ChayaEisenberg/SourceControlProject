@@ -14,7 +14,10 @@ namespace SourceControlProject
         {
             
         }
-        //return after finish
+        public void Add(Component component)
+        {
+            components.Add(component.Name, component);
+        }
         public override Component Marge(Component other)
         {
             Component branch = base.Marge(other);
@@ -34,6 +37,20 @@ namespace SourceControlProject
             }
             return this;
         }
-    
+        public override Component Copy()
+        {
+            Branch branch = new(this.Name);
+            branch.SetState(state);
+            if (components == null)
+            {
+                return branch;
+            }
+            foreach (Component item in this.components.Values)
+            {
+                item.Copy();
+            }
+            return branch;
+        }
+
     }
 }

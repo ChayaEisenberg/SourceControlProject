@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace SourceControlProject
 {
-    public class MyFile : Component, IFile
+    public class MyFile : Component
     {
         public string Content;
         public MyFile(string name, string content) : base(name)
         {
             this.Content = content;
+        }
+
+        public override Component Copy()
+        {
+            MyFile file = (MyFile)this.MemberwiseClone();
+            file.SetState(this.state); 
+            return file;
         }
 
         public override Component Marge(Component other)

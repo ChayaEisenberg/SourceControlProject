@@ -19,7 +19,7 @@ namespace SourceControlProject.Memento
 
         public void Backup()
         {
-            Console.WriteLine("\nCaretaker: Saving Originator's state...");
+            Console.WriteLine("\nCaretaker: Saving Components state...");
             this._mementos.Add(this.component.Save());
         }
 

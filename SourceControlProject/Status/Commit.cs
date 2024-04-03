@@ -17,7 +17,10 @@ internal class Commit : IState
     }
     public void changeStatus(Component component)
     {
-        component.SetState(UnderReview.GetInstanse());
+        if (Admin.confirmReview(component))
+        {
+            component.SetState(UnderReview.GetInstanse());
+        }
     }
     private Commit()
     {
